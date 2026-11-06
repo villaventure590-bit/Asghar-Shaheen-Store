@@ -734,24 +734,30 @@ document.addEventListener('keydown', function(e) {
 });
 
 // tap 5 times screen to come thew admin dash strt
-// -------------------------------------------------------------
-// OPTION 3: SECRET ADMIN URL DETECTOR (?admin=true)
-// -------------------------------------------------------------
-function openAdminDirect() {
-    const modal = document.getElementById('adminModal');
-    if (modal) {
-        modal.style.display = 'block';
-        if (typeof checkAdminSetupState === 'function') {
-            checkAdminSetupState();
+// Mobile Hidden Tap Counter (Tap store title 5 times quickly to open Admin on mobile)
+let tapCount = 0;
+let tapTimer = null;
+
+function handleMobileAdminTap() {
+    tapCount++;
+    
+    if (tapTimer) clearTimeout(tapTimer);
+    
+    // Reset taps if user stops tapping for more than 1 second
+    tapTimer = setTimeout(() => {
+        tapCount = 0;
+    }, 1000);
+
+    // If tapped 5 times quickly, open Admin Modal
+    if (tapCount >= 5) {
+        tapCount = 0;
+        const modal = document.getElementById('adminModal');
+        if (modal) {
+            modal.style.display = 'block';
+            if (typeof checkAdminSetupState === 'function') {
+                checkAdminSetupState();
+            }
         }
     }
 }
-
-// Automatically pop up Admin Panel if web link ends with ?admin=true
-document.addEventListener('DOMContentLoaded', function() {
-    const urlParams = new URLSearchParams(window.location.search);
-    if (urlParams.get('admin') === 'true') {
-        openAdminDirect();
-    }
-});
 // tap 5 times screen to come thew admin dash end
