@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asghar Medical Store - Loralai, Balochistan</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <!-- Top Announcement Bar -->
+    <div class="top-bar">
+        <div class="container top-bar-content">
+            <div><i class="fa-solid fa-location-dot"></i> Loralai, Balochistan, Pakistan</div>
+            <div>
+                <i class="fa-solid fa-phone"></i> Direct Lines: 
+                <a href="tel:03288041010" style="color:#fff; text-decoration:none;">03288041010</a> | 
+                <a href="tel:03316820076" style="color:#fff; text-decoration:none;">03316820076</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header / Navigation Bar -->
+    <header class="header">
+        <div class="container nav-container">
+            <div class="logo" onclick="switchPage('homePage')">
+                <i class="fa-solid fa-house-medical logo-icon"></i>
+                <div class="logo-text">
+                    <h2>Asghar Medical</h2>
+                    <span>Pharmacy & Healthcare • Loralai</span>
+                </div>
+            </div>
+            <nav class="nav-menu">
+                <a href="#" class="nav-link active" onclick="switchPage('homePage')">Home</a>
+                <a href="#" class="nav-link" onclick="switchPage('aboutPage')">About Us</a>
+                <a href="#" class="nav-link" onclick="switchPage('productsPage')">Medicines</a>
+                <a href="#" class="nav-link" onclick="switchPage('categoriesPage')">Categories</a>
+                <a href="#" class="nav-link" onclick="switchPage('contactPage')">Contact</a>
+                <button class="btn btn-secondary" onclick="openModal('adminModal')">Admin Dashboard</button>
+            </nav>
+            <div class="cart-trigger" onclick="openModal('cartModal')">
+                <i class="fa-solid fa-clipboard-list"></i>
+                <span>Enquiry List</span>
+                <div class="badge" id="cartBadge">0</div>
+            </div>
+        </div>
+    </header>
+
+    <!-- MAIN PAGE WRAPPER -->
+    <main id="app">
+
+        <!-- HOME PAGE -->
+        <section id="homePage" class="page-view active">
+            <div class="hero">
+                <div class="container hero-content">
+                    <h1>Trusted Healthcare & Medicines in Loralai</h1>
+                    <p>Providing genuine pharmaceutical products, mother & baby care, emergency first-aid items, and personal healthcare products directly to your doorstep in Loralai, Balochistan.</p>
+                    <div class="hero-actions">
+                        <button class="btn btn-primary" onclick="switchPage('productsPage')"><i class="fa-solid fa-pills"></i> Browse All Medicines</button>
+                        <a href="https://wa.me/923288041010" target="_blank" class="btn btn-whatsapp"><i class="fa-brands fa-whatsapp"></i> WhatsApp Order (03288041010)</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="safety-banner">
+                <div class="container safety-content">
+                    <i class="fa-solid fa-shield-halved safety-icon"></i>
+                    <div>
+                        <strong>Prescription Safety Compliance Notice:</strong>
+                        <span>Prescription-only medicines (Rx) require physical verification by an authorized pharmacist. We do not provide automated medical diagnoses or encourage self-medication.</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="container" style="padding: 50px 20px;">
+                <div class="section-header">
+                    <h2>Featured Categories</h2>
+                    <p>Explore over  high-quality medicines categorized for quick navigation.</p>
+                </div>
+                <div class="products-grid" style="grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));">
+                    <div class="product-card" onclick="selectCategory('tablets')" style="text-align:center; cursor:pointer;">
+                        <i class="fa-solid fa-tablets" style="font-size:2.5rem; color:var(--emerald); margin-bottom:10px;"></i>
+                        <h3>Tablets & Capsules</h3>
+                        <small> Items Available</small>
+                    </div>
+                    <div class="product-card" onclick="selectCategory('syrups')" style="text-align:center; cursor:pointer;">
+                        <i class="fa-solid fa-prescription-bottle" style="font-size:2.5rem; color:var(--emerald); margin-bottom:10px;"></i>
+                        <h3>Syrups & Liquids</h3>
+                        <small> Items Available</small>
+                    </div>
+                    <div class="product-card" onclick="selectCategory('injections')" style="text-align:center; cursor:pointer;">
+                        <i class="fa-solid fa-syringe" style="font-size:2.5rem; color:var(--emerald); margin-bottom:10px;"></i>
+                        <h3>Injections & Drops</h3>
+                        <small> Items Available</small>
+                    </div>
+                    <div class="product-card" onclick="selectCategory('firstaid')" style="text-align:center; cursor:pointer;">
+                        <i class="fa-solid fa-kit-medical" style="font-size:2.5rem; color:var(--emerald); margin-bottom:10px;"></i>
+                        <h3>First Aid Supplies</h3>
+                        <small> Items Available</small>
+                    </div>
+                    <div class="product-card" onclick="selectCategory('babycare')" style="text-align:center; cursor:pointer;">
+                        <i class="fa-solid fa-baby" style="font-size:2.5rem; color:var(--emerald); margin-bottom:10px;"></i>
+                        <h3>Mother & Baby Care</h3>
+                        <small> Items Available</small>
+                    </div>
+                    <div class="product-card" onclick="selectCategory('personalcare')" style="text-align:center; cursor:pointer;">
+                        <i class="fa-solid fa-pump-soap" style="font-size:2.5rem; color:var(--emerald); margin-bottom:10px;"></i>
+                        <h3>Health & Personal Care</h3>
+                        <small> Items Available</small>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- MEDICINES / PRODUCTS PAGE -->
+        <section id="productsPage" class="page-view container" style="padding: 40px 20px;">
+            <div class="section-header">
+                <h2>Medicine & Health Catalog</h2>
+                <p>Showing  authentic medicine samples with real Pakistani market prices (PKR).</p>
+            </div>
+
+            <div class="search-box">
+                <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                <input type="text" id="searchInput" placeholder="Search medicines, paracetamol, syrups, baby care..." onkeyup="renderProducts()">
+            </div>
+
+            <div class="filter-pills" id="categoryFilters">
+                <button class="pill-btn active" onclick="setCategoryFilter('all', this)">All </button>
+                <button class="pill-btn" onclick="setCategoryFilter('tablets', this)">Tablets & Capsules </button>
+                <button class="pill-btn" onclick="setCategoryFilter('syrups', this)">Syrups & Liquids </button>
+                <button class="pill-btn" onclick="setCategoryFilter('injections', this)">Injections & Drops </button>
+                <button class="pill-btn" onclick="setCategoryFilter('firstaid', this)">First Aid </button>
+                <button class="pill-btn" onclick="setCategoryFilter('babycare', this)">Mother & Baby Care </button>
+                <button class="pill-btn" onclick="setCategoryFilter('personalcare', this)">Personal Care </button>
+            </div>
+
+            <div class="products-grid" id="productGrid"></div>
+        </section>
+
+        <!-- CATEGORIES PAGE -->
+        <section id="categoriesPage" class="page-view container" style="padding: 40px 20px;">
+            <div class="section-header">
+                <h2>All Product Categories</h2>
+                <p>Select any category to instantly view the corresponding medicines.</p>
+            </div>
+            <div class="products-grid">
+                <div class="product-card" onclick="selectCategory('tablets')" style="cursor:pointer; text-align:center;">
+                    <img src="https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?auto=format&fit=crop&w=400&q=80" class="product-img">
+                    <h3 style="margin-top:10px;">Tablets & Capsules</h3>
+                    <p>Antibiotics, pain relievers, vitamins, and cardiac tablets.</p>
+                </div>
+                <div class="product-card" onclick="selectCategory('syrups')" style="cursor:pointer; text-align:center;">
+                    <img src="https://images.unsplash.com/photo-1576602976047-174e57a47881?auto=format&fit=crop&w=400&q=80" class="product-img">
+                    <h3 style="margin-top:10px;">Syrups & Liquids</h3>
+                    <p>Cough syrups, fever suspensions, and antacid liquids.</p>
+                </div>
+                <div class="product-card" onclick="selectCategory('injections')" style="cursor:pointer; text-align:center;">
+                    <img src="https://images.unsplash.com/photo-1550572017-edd951baa74c?auto=format&fit=crop&w=400&q=80" class="product-img">
+                    <h3 style="margin-top:10px;">Injections & Drops</h3>
+                    <p>Sterile eye/ear drops, IV fluids, and ampoules.</p>
+                </div>
+                <div class="product-card" onclick="selectCategory('firstaid')" style="cursor:pointer; text-align:center;">
+                    <img src="https://images.unsplash.com/photo-1603398938378-e54eab446dde?auto=format&fit=crop&w=400&q=80" class="product-img">
+                    <h3 style="margin-top:10px;">First Aid Products</h3>
+                    <p>Bandages, pyodine solutions, surgical cotton, and tapes.</p>
+                </div>
+                <div class="product-card" onclick="selectCategory('babycare')" style="cursor:pointer; text-align:center;">
+                    <img src="https://images.unsplash.com/photo-1515488042361-ee00e0ddd4e4?auto=format&fit=crop&w=400&q=80" class="product-img">
+                    <h3 style="margin-top:10px;">Mother & Baby Care</h3>
+                    <p>Infant formulas, baby lotions, diapers, and feeding care.</p>
+                </div>
+                <div class="product-card" onclick="selectCategory('personalcare')" style="cursor:pointer; text-align:center;">
+                    <img src="https://images.unsplash.com/photo-1556228720-195a672e8a03?auto=format&fit=crop&w=400&q=80" class="product-img">
+                    <h3 style="margin-top:10px;">Health & Personal Care</h3>
+                    <p>Skin ointments, antiseptics, and daily hygiene products.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ABOUT PAGE -->
+        <section id="aboutPage" class="page-view container" style="padding: 40px 20px;">
+            <div class="about-card">
+                <h2>About Asghar Medical Store</h2>
+                <p style="margin-top:15px; line-height:1.7;">
+                    Located in Loralai, Balochistan, <strong>Asghar Medical Store</strong> is dedicated to serving the local community with reliable healthcare solutions, certified pharmaceutical supplies, and fast emergency inquiries. We stock authentic medicines kept under standard climate control.
+                </p>
+                <div style="margin-top:25px; display:grid; grid-template-columns: 1fr 1fr; gap:20px;">
+                    <div style="background:var(--light-bg); padding:15px; border-radius:8px;">
+                        <h4><i class="fa-solid fa-check-circle" style="color:var(--emerald);"></i> Quality Assurance</h4>
+                        <p style="font-size:0.9rem; color:var(--gray-text);">100% genuine products sourced from licensed distributors in Pakistan.</p>
+                    </div>
+                    <div style="background:var(--light-bg); padding:15px; border-radius:8px;">
+                        <h4><i class="fa-solid fa-truck-medical" style="color:var(--emerald);"></i> Quick Local Delivery</h4>
+                        <p style="font-size:0.9rem; color:var(--gray-text);">Direct WhatsApp delivery coordination across Loralai city.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CONTACT PAGE -->
+        <section id="contactPage" class="page-view container" style="padding: 40px 20px;">
+            <div class="section-header">
+                <h2>Contact Us</h2>
+                <p>We are available to answer stock availability, pricing, and prescription queries.</p>
+            </div>
+            <div class="contact-grid">
+                <div class="contact-card">
+                    <i class="fa-solid fa-phone contact-icon"></i>
+                    <h3>Phone Support</h3>
+                    <p><strong>03288041010</strong></p>
+                    <p><strong>03316820076</strong></p>
+                </div>
+                <div class="contact-card">
+                    <i class="fa-solid fa-location-dot contact-icon"></i>
+                    <h3>Store Address</h3>
+                    <p>Main Commercial Bazaar, Loralai</p>
+                    <p>Balochistan, Pakistan</p>
+                </div>
+                <div class="contact-card">
+                    <i class="fa-brands fa-whatsapp contact-icon"></i>
+                    <h3>WhatsApp Order Line</h3>
+                    <p>Direct chat for instant medicine inquiry</p>
+                    <a href="https://wa.me/923288041010" target="_blank" class="btn btn-whatsapp" style="margin-top:10px;">Chat on WhatsApp</a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container footer-content">
+            <p>&copy; 2026 Asghar Medical Store • Loralai, Balochistan, Pakistan. All Rights Reserved.</p>
+            <p class="developer-credit">Website created by <strong>Abdul Shakoor Ajiz</strong></p>
+        </div>
+    </footer>
+
+    <!-- SHOPPING ENQUIRY LIST MODAL -->
+     <!-- SHOPPING ENQUIRY LIST MODAL -->
+<div class="modal" id="cartModal">
+    <div class="modal-content" style="max-width: 600px;">
+        <div class="modal-header">
+            <h3>Shopping Enquiry & Order Form</h3>
+            <span class="close-btn" onclick="closeModal('cartModal')">&times;</span>
+        </div>
+        
+        <div class="modal-body">
+            <h4>Selected Medicines</h4>
+            <div id="cartItemList" style="margin-bottom:15px; max-height:180px; overflow-y:auto; border:1px solid #eee; padding:10px; border-radius:6px;">
+                <p>Your enquiry list is currently empty.</p>
+            </div>
+            
+            <div id="cartTotal" style="font-weight:bold; font-size:1.1rem; color:var(--emerald-dark); margin-bottom:15px;">Total: PKR 0</div>
+            
+            <hr style="margin-bottom:15px; border:none; border-top:1px solid #eee;">
+            
+            <h4>Customer Delivery Details</h4>
+
+            <!-- ADD YOUR FORMSPREE ACTION LINK HERE -->
+            <form id="formspreeOrderForm" action="https://formspree.io/f/xaeeklaw" method="POST" style="display:flex; flex-direction:column; gap:10px; margin-top:10px;">
+                <!-- Hidden fields to automatically send cart items and calculated totals -->
+                <input type="hidden" name="Order_Summary" id="formspreeSummary">
+                <input type="hidden" name="Total_Amount" id="formspreeTotal">
+                
+                <input type="text" name="Customer_Name" placeholder="Full Name" required style="padding:10px; border:1px solid #ccc; border-radius:4px;">
+                <input type="tel" name="Customer_Phone" placeholder="Mobile Phone Number (e.g. 03001234567)" required style="padding:10px; border:1px solid #ccc; border-radius:4px;">
+                <textarea name="Delivery_Address" placeholder="Delivery Address in Loralai, Balochistan" rows="2" required style="padding:10px; border:1px solid #ccc; border-radius:4px;"></textarea>
+                <textarea name="Prescription_Notes" placeholder="Prescription notes / Pharmacist verification (If Rx item selected)" rows="2" style="padding:10px; border:1px solid #ccc; border-radius:4px;"></textarea>
+
+                <div style="display:flex; gap:10px; margin-top:10px;">
+                    <button type="submit" class="btn btn-primary" style="flex:1; justify-content:center;">
+                        <i class="fa-solid fa-paper-plane"></i> Send via Formspree
+                    </button>
+                    <button type="button" class="btn btn-whatsapp" style="flex:1; justify-content:center;" onclick="sendWhatsAppOrder()">
+                        <i class="fa-brands fa-whatsapp"></i> Order on WhatsApp
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+     <!-- tale  -->
+    <div class="modal" id="cartModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Shopping Enquiry List</h3>
+                <span class="close-btn" onclick="closeModal('cartModal')">&times;</span>
+            </div>
+            <div class="modal-body" id="cartItemList">
+                <p>Your enquiry list is currently empty.</p>
+            </div>
+            <div class="modal-footer">
+                <div id="cartTotal" style="font-weight:bold; width:100%; margin-bottom:10px; font-size:1.1rem; color:var(--emerald-dark);">Total: PKR 0</div>
+                <button class="btn btn-whatsapp" style="width:100%;" onclick="sendWhatsAppOrder()">
+                    <i class="fa-brands fa-whatsapp"></i> Submit Enquiry via WhatsApp
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ADMIN DASHBOARD MODAL -->
+
+    <!-- PRIVATE ADMIN DASHBOARD MODAL -->
+     <!-- new code for admin  strt -->
+      <!-- SECURE ADMIN MANAGEMENT MODAL -->
+<div class="modal" id="adminModal">
+    <div class="modal-content" style="max-width: 750px;">
+        <div class="modal-header">
+            <h3>Asghar Medical Store - Secure Admin Control</h3>
+            <span class="close-btn" onclick="closeModal('adminModal')">&times;</span>
+        </div>
+        
+        <!-- STEP A: First-Time Owner Registration (Appears only on very first setup) -->
+        <div id="adminSetupView" style="display: none; padding: 15px 0;">
+            <div style="text-align: center; margin-bottom: 15px;">
+                <i class="fa-solid fa-user-shield" style="font-size: 2.5rem; color: var(--navy);"></i>
+                <h4 style="margin-top: 10px;">Initial Owner Registration (One-Time Only)</h4>
+                <p style="font-size: 0.9rem; color: #666;">Enter your personal credentials to secure this store dashboard.</p>
+            </div>
+            <form id="ownerSetupForm" onsubmit="saveOwnerSetup(event)" style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+                <input type="text" id="ownerName" placeholder="Full Name" required style="padding: 10px; border: 1px solid #ccc; border-radius: 4px;">
+                <input type="tel" id="ownerPhone" placeholder="Phone Number (e.g., 03288041010)" required style="padding: 10px; border: 1px solid #ccc; border-radius: 4px;">
+                <input type="text" id="ownerCnic" placeholder="CNIC / ID Card Number" required style="padding: 10px; border: 1px solid #ccc; border-radius: 4px;">
+                <input type="text" id="ownerCity" placeholder="City (e.g., Loralai)" required style="padding: 10px; border: 1px solid #ccc; border-radius: 4px;">
+                <input type="text" id="ownerProvince" placeholder="Province (e.g., Balochistan)" required style="grid-column: span 2; padding: 10px; border: 1px solid #ccc; border-radius: 4px;">
+                <input type="password" id="ownerNewPass" placeholder="Set Secure Admin Password" required style="grid-column: span 2; padding: 10px; border: 1px solid #ccc; border-radius: 4px;">
+                <button type="submit" class="btn btn-primary" style="grid-column: span 2; padding: 12px;">Complete Secure Setup</button>
+            </form>
+        </div>
+
+        <!-- STEP B: Password Login Screen (With Eye Icon & Lockout Security) -->
+        <div id="adminLoginForm" style="padding: 20px 0; text-align: center;">
+            <i class="fa-solid fa-lock" style="font-size: 3rem; color: var(--navy); margin-bottom: 15px;"></i>
+            <h4 style="margin-bottom: 15px;">Owner Authentication Required</h4>
+            
+            <!-- Password input with Show/Hide eye icon -->
+            <div style="position: relative; width: 80%; margin: 0 auto 15px auto;">
+                <input type="password" id="adminPassInput" placeholder="Enter Secret Password" style="padding: 10px; width: 100%; border: 1px solid #ccc; border-radius: 4px; padding-right: 40px;">
+                <i class="fa-solid fa-eye" id="togglePassIcon" onclick="togglePasswordVisibility()" style="position: absolute; right: 12px; top: 12px; cursor: pointer; color: #666;"></i>
+            </div>
+            
+            <button class="btn btn-primary" id="loginBtn" onclick="verifyAdminPassword()">
+                <i class="fa-solid fa-key"></i> Unlock Dashboard
+            </button>
+            <p id="adminLoginError" style="color: red; margin-top: 10px; display: none; font-weight: bold;"></p>
+        </div>
+
+        <!-- STEP C: Private Admin Dashboard View (Fully Secured) -->
+<!-- togeleee dash borad  strat  -->
+ <!-- UPDATE THIS HEADER SECTION INSIDE YOUR adminModal IN index.html -->
+<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; background: #f8f9fa; padding: 12px; border-radius: 8px;">
+    <div style="display: flex; align-items: center; gap: 12px;">
+        <img id="adminProfilePic" src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=120&q=80" alt="Admin Avatar" style="width: 50px; height: 50px; border-radius: 50%; object-fit: cover; border: 2px solid var(--emerald-dark);">
+        <div>
+            <h4 style="margin: 0; color: var(--navy);">Incoming Customer Orders</h4>
+            <p id="ownerBadgeInfo" style="font-size: 0.85rem; color: #555; margin: 2px 0 0 0;"></p>
+        </div>
+    </div>
+    
+    <!-- Action Controls: Maximize/Minimize & Lock -->
+    <div style="display: flex; gap: 8px;">
+        <button class="btn btn-secondary" id="maxMinBtn" onclick="toggleMaximizeAdmin()" title="Maximize / Minimize" style="padding: 6px 12px; font-size: 0.85rem;">
+            <i class="fa-solid fa-expand" id="maxMinIcon"></i> Full Screen
+        </button>
+        <button class="btn btn-secondary" onclick="lockAdminPanel()" style="padding: 6px 12px; font-size: 0.85rem;">
+            <i class="fa-solid fa-lock"></i> Lock
+        </button>
+    </div>
+</div>
+
+<!-- ADD A "CLEAR ALL ORDERS" BUTTON BELOW YOUR ORDERS TABLE -->
+<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+    <span style="font-size: 0.9rem; color: #666;" id="orderCountLabel">Total Orders: 0</span>
+    <button class="btn btn-secondary" onclick="clearAllOrders()" style="background-color: #dc3545; color: white; border: none; padding: 6px 12px; font-size: 0.85rem; border-radius: 4px;">
+        <i class="fa-solid fa-trash-can"></i> Clear All Orders
+    </button>
+</div>
+ <!-- togeleee dash borad  end -->
+
+        <div id="adminDashboardView" style="display: none;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+                <div>
+                    <h4>Incoming Customer Orders</h4>
+                    <p id="ownerBadgeInfo" style="font-size: 0.85rem; color: #555; margin: 2px 0 0 0;"></p>
+                </div>
+                <button class="btn btn-secondary" onclick="lockAdminPanel()"><i class="fa-solid fa-lock"></i> Lock & Exit</button>
+            </div>
+
+            <!-- Orders Table -->
+          
+            <div style="max-height: 220px; overflow-y: auto; border: 1px solid #eee; padding: 10px; border-radius: 6px; margin-bottom: 20px;">
+                <table style="width: 100%; text-align: left; border-collapse: collapse;">
+                    <thead>
+                        <tr style="border-bottom: 2px solid #ccc;">
+                            <th style="padding: 8px;">Date</th>
+                            <th style="padding: 8px;">Items Count</th>
+                            <th style="padding: 8px;">Total</th>
+                        </tr>
+                    </thead>
+                    <tbody id="adminOrdersBody">
+                        <tr><td colspan="3" style="padding: 10px; text-align: center;">No customer orders logged yet.</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <hr style="margin-bottom: 20px; border: none; border-top: 1px solid #eee;">
+            
+            <h4>Manage Inventory</h4>
+            <div style="display: flex; gap: 10px; margin: 15px 0;">
+                <button class="btn btn-primary" onclick="seedInventory()">Regenerate 200+ Demo Medicines</button>
+                <button class="btn btn-secondary" onclick="resetInventory()">Clear All Inventory</button>
+            </div>
+   <!-- delet option strt  -->
+
+                <thead>
+    <tr style="border-bottom: 2px solid #ccc; background: #f1f3f5;">
+        <th style="padding: 10px;">Date & Time</th>
+        <th style="padding: 10px;">Customer Name & Location</th>
+        <th style="padding: 10px;">Total Price</th>
+        <th style="padding: 10px; text-align: center;">Actions</th>
+    </tr>
+</thead>
+                  <!-- delet option end  -->
+            <!-- Add Product Form -->
+            <form id="addProductForm" style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+                <input type="text" id="pName" placeholder="Product Name" required style="padding: 10px; border: 1px solid #ccc; border-radius: 4px;">
+                <select id="pCat" style="padding: 10px; border: 1px solid #ccc; border-radius: 4px;">
+                    <option value="tablets">Tablets & Capsules</option>
+                    <option value="syrups">Syrups & Liquids</option>
+                    <option value="injections">Injections & Drops</option>
+                    <option value="firstaid">First Aid Products</option>
+                    <option value="babycare">Mother & Baby Care</option>
+                    <option value="personalcare">Health & Personal Care</option>
+                </select>
+                <input type="number" id="pPrice" placeholder="Price (PKR)" required style="padding: 10px; border: 1px solid #ccc; border-radius: 4px;">
+                <select id="pRx" style="padding: 10px; border: 1px solid #ccc; border-radius: 4px;">
+                    <option value="false">Over-The-Counter (OTC)</option>
+                    <option value="true">Prescription Required (Rx)</option>
+                </select>
+                <input type="text" id="pImg" placeholder="Image URL (Optional)" style="grid-column: span 2; padding: 10px; border: 1px solid #ccc; border-radius: 4px;">
+                <button type="submit" class="btn btn-primary" style="grid-column: span 2;">Add Medicine to Catalog</button>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- the new admin pic realted  strat  -->
+
+<!-- INSIDE adminDashboardView (Update your top admin header area) -->
+<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; background: #f8f9fa; padding: 12px; border-radius: 8px;">
+    <div style="display: flex; align-items: center; gap: 12px;">
+        <!-- Admin Profile Picture -->
+        <img id="adminProfilePic" src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=120&q=80" alt="Admin Avatar" style="width: 50px; height: 50px; border-radius: 50%; object-fit: cover; border: 2px solid var(--emerald-dark);">
+        <div>
+            <h4 style="margin: 0; color: var(--navy);">Incoming Customer Orders</h4>
+            <p id="ownerBadgeInfo" style="font-size: 0.85rem; color: #555; margin: 2px 0 0 0;"></p>
+        </div>
+    </div>
+    <button class="btn btn-secondary" onclick="lockAdminPanel()"><i class="fa-solid fa-lock"></i> Lock & Exit</button>
+</div>
+
+<!-- Detailed Printable Orders Table -->
+<div style="max-height: 280px; overflow-y: auto; border: 1px solid #eee; padding: 10px; border-radius: 6px; margin-bottom: 20px;">
+    <table style="width: 100%; text-align: left; border-collapse: collapse;">
+        <thead>
+            <tr style="border-bottom: 2px solid #ccc; background: #f1f3f5;">
+                <th style="padding: 10px;">Date & Time</th>
+                <th style="padding: 10px;">Customer Name & Location</th>
+                <th style="padding: 10px;">Total Price</th>
+                <th style="padding: 10px; text-align: center;">Action</th>
+            </tr>
+        </thead>
+        <tbody id="adminOrdersBody">
+            <tr><td colspan="4" style="padding: 15px; text-align: center;">No customer orders logged yet.</td></tr>
+        </tbody>
+    </table>
+</div>
+
+<!-- PRINTABLE ORDER RECEIPT POPUP MODAL -->
+<div class="modal" id="orderReceiptModal">
+    <div class="modal-content" style="max-width: 600px; padding: 25px;" id="printableReceiptContent">
+        <div style="text-align: center; border-bottom: 2px dashed #ccc; padding-bottom: 15px; margin-bottom: 15px;">
+            <h2 style="color: var(--navy); margin: 0;">ASGHAR MEDICAL STORE</h2>
+            <p style="margin: 3px 0; font-size: 0.9rem; color: #666;">Main Commercial Bazaar, Loralai, Balochistan</p>
+            <p style="margin: 3px 0; font-size: 0.85rem; color: #666;">Phones: 03288041010 | 03316820076</p>
+            <h3 style="margin-top: 10px; color: var(--emerald-dark);">Official Customer Order Receipt</h3>
+        </div>
+
+        <div style="margin-bottom: 15px; font-size: 0.95rem;">
+            <p><strong>Order ID / Date:</strong> <span id="receiptDate"></span></p>
+            <p><strong>Customer Name:</strong> <span id="receiptCustName"></span></p>
+            <p><strong>Phone Number:</strong> <span id="receiptPhone"></span></p>
+            <p><strong>Delivery Location / City:</strong> <span id="receiptLocation"></span></p>
+            <p><strong>Prescription Notes:</strong> <span id="receiptNotes">None</span></p>
+        </div>
+
+        <table style="width: 100%; border-collapse: collapse; margin-bottom: 15px;">
+            <thead>
+                <tr style="border-bottom: 1px solid #333; background: #f8f9fa;">
+                    <th style="padding: 8px; text-align: left;">Medicine / Tablet Name</th>
+                    <th style="padding: 8px; text-align: center;">Qty</th>
+                    <th style="padding: 8px; text-align: right;">Price</th>
+                </tr>
+            </thead>
+            <tbody id="receiptItemsBody">
+                <!-- Dynamically populated items -->
+            </tbody>
+        </table>
+
+        <div style="text-align: right; border-top: 2px solid #333; padding-top: 10px; margin-bottom: 20px;">
+            <h3 style="margin: 0; color: var(--navy);">Total Amount: <span id="receiptTotalAmount"></span></h3>
+        </div>
+
+        <div style="display: flex; gap: 10px; justify-content: center;" class="no-print">
+            <button class="btn btn-primary" onclick="window.print()"><i class="fa-solid fa-print"></i> Print Receipt</button>
+            <button class="btn btn-secondary" onclick="closeModal('orderReceiptModal')">Close Receipt</button>
+        </div>
+    </div>
+</div>
+ <!-- the new admin pic realted  end -->
+      <!-- end the new code  -->
+<div class="modal" id="adminModal">
+    <div class="modal-content" style="max-width: 750px;">
+        <div class="modal-header">
+            <h3>Admin Management Panel</h3>
+            <span class="close-btn" onclick="closeModal('adminModal')">&times;</span>
+        </div>
+        
+        <!-- STEP A: Login Screen (Shown First) -->
+        <div id="adminLoginForm" style="padding: 20px 0; text-align: center;">
+            <i class="fa-solid fa-lock" style="font-size: 3rem; color: var(--navy); margin-bottom: 15px;"></i>
+            <h4 style="margin-bottom: 15px;">Store Owner Password Required</h4>
+            <input type="password" id="adminPassInput" placeholder="Enter Secret Password" style="padding: 10px; width: 80%; border: 1px solid #ccc; border-radius: 4px; margin-bottom: 15px;">
+            <br>
+            <button class="btn btn-primary" onclick="verifyAdminPassword()">
+                <i class="fa-solid fa-key"></i> Unlock Dashboard
+            </button>
+            <p id="adminLoginError" style="color: red; margin-top: 10px; display: none;">Incorrect password! Please try again.</p>
+        </div>
+
+        <!-- STEP B: Private Admin View (Hidden Until Unlocked) -->
+        <div id="adminDashboardView" style="display: none;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+                <h4>Incoming Customer Orders & Formspree Log</h4>
+                <button class="btn btn-secondary" onclick="lockAdminPanel()"><i class="fa-solid fa-lock"></i> Lock & Exit</button>
+            </div>
+
+            <!-- Orders Log Table -->
+            <div style="max-height: 220px; overflow-y: auto; border: 1px solid #eee; padding: 10px; border-radius: 6px; margin-bottom: 20px;">
+                <table style="width: 100%; text-align: left; border-collapse: collapse;">
+                    <thead>
+                        <tr style="border-bottom: 2px solid #ccc;">
+                            <th style="padding: 8px;">Date</th>
+                            <th style="padding: 8px;">Items Count</th>
+                            <th style="padding: 8px;">Total</th>
+                        </tr>
+                    </thead>
+                    <tbody id="adminOrdersBody">
+                        <tr><td colspan="3" style="padding: 10px; text-align: center;">No customer orders logged yet.</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <hr style="margin-bottom: 20px; border: none; border-top: 1px solid #eee;">
+            
+            <h4>Manage Inventory</h4>
+            <div style="display: flex; gap: 10px; margin: 15px 0;">
+                <button class="btn btn-primary" onclick="seedInventory()">Regenerate 200+ Demo Medicines</button>
+                <button class="btn btn-secondary" onclick="resetInventory()">Clear All Inventory</button>
+            </div>
+
+            <!-- Add Product Form -->
+            <form id="addProductForm" style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+                <input type="text" id="pName" placeholder="Product Name" required style="padding: 10px; border: 1px solid #ccc; border-radius: 4px;">
+                <select id="pCat" style="padding: 10px; border: 1px solid #ccc; border-radius: 4px;">
+                    <option value="tablets">Tablets & Capsules</option>
+                    <option value="syrups">Syrups & Liquids</option>
+                    <option value="injections">Injections & Drops</option>
+                    <option value="firstaid">First Aid Products</option>
+                    <option value="babycare">Mother & Baby Care</option>
+                    <option value="personalcare">Health & Personal Care</option>
+                </select>
+                <input type="number" id="pPrice" placeholder="Price (PKR)" required style="padding: 10px; border: 1px solid #ccc; border-radius: 4px;">
+                <select id="pRx" style="padding: 10px; border: 1px solid #ccc; border-radius: 4px;">
+                    <option value="false">Over-The-Counter (OTC)</option>
+                    <option value="true">Prescription Required (Rx)</option>
+                </select>
+                <input type="text" id="pImg" placeholder="Image URL (Optional)" style="grid-column: span 2; padding: 10px; border: 1px solid #ccc; border-radius: 4px;">
+                <button type="submit" class="btn btn-primary" style="grid-column: span 2;">Add Medicine to Catalog</button>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- admine fofofo  -->
+
+
+
+    <div class="modal" id="adminModal">
+        <div class="modal-content" style="max-width: 750px;">
+            <div class="modal-header">
+                <h3>Admin Inventory Dashboard</h3>
+                <span class="close-btn" onclick="closeModal('adminModal')">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div style="display:flex; gap:10px; margin-bottom:20px;">
+                    <button class="btn btn-primary" onclick="seedInventory()">Regenerate 200+ Demo Medicines</button>
+                    <button class="btn btn-secondary" onclick="resetInventory()">Clear All Inventory</button>
+                </div>
+                <hr style="margin-bottom:20px; border:none; border-top:1px solid #eee;">
+                <h4>Add New Medicine Item</h4>
+                <form id="addProductForm" style="display:grid; grid-template-columns: 1fr 1fr; gap:10px; margin-top:10px;">
+                    <input type="text" id="pName" placeholder="Product Name (e.g., Augmentin 625mg)" required style="padding:10px; border:1px solid #ccc; border-radius:4px;">
+                    <select id="pCat" style="padding:10px; border:1px solid #ccc; border-radius:4px;">
+                        <option value="tablets">Tablets & Capsules</option>
+                        <option value="syrups">Syrups & Liquids</option>
+                        <option value="injections">Injections & Drops</option>
+                        <option value="firstaid">First Aid Products</option>
+                        <option value="babycare">Mother & Baby Care</option>
+                        <option value="personalcare">Health & Personal Care</option>
+                    </select>
+                    <input type="number" id="pPrice" placeholder="Price (PKR)" required style="padding:10px; border:1px solid #ccc; border-radius:4px;">
+                    <select id="pRx" style="padding:10px; border:1px solid #ccc; border-radius:4px;">
+                        <option value="false">Over-The-Counter (OTC)</option>
+                        <option value="true">Prescription Required (Rx)</option>
+                    </select>
+                    <input type="text" id="pImg" placeholder="Image URL (Optional)" style="grid-column: span 2; padding:10px; border:1px solid #ccc; border-radius:4px;">
+                    <button type="submit" class="btn btn-primary" style="grid-column: span 2;">Add Medicine to Catalog</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- new code for recpiy strat -->
+
+    <!-- CUSTOMER CHECKOUT & ORDER FORM -->
+<form id="formspreeOrderForm" action="https://formspree.io/f/xaeeklaw" method="POST" enctype="multipart/form-data" style="display: grid; gap: 12px; margin-top: 15px;">
+    
+    <h4 style="color: var(--navy); margin-bottom: 5px;">Delivery & Customer Details</h4>
+    
+    <!-- Required Fields -->
+    <input type="text" id="custName" name="Customer Name" placeholder="Full Name (Required)" required style="padding: 10px; border: 1px solid #ccc; border-radius: 4px;">
+    
+    <input type="tel" id="custPhone" name="Phone Number" placeholder="Phone Number e.g. 03288041010 (Required)" required style="padding: 10px; border: 1px solid #ccc; border-radius: 4px;">
+    
+    <input type="text" id="custCity" name="City / Location" placeholder="City / Area e.g. Loralai (Required)" required style="padding: 10px; border: 1px solid #ccc; border-radius: 4px;">
+    
+    <!-- Optional Doctor & Prescription Fields -->
+    <input type="text" id="custDoctor" name="Doctor Name" placeholder="Consulting Doctor Name (Optional)" style="padding: 10px; border: 1px solid #ccc; border-radius: 4px;">
+    
+    <div style="background: #f8f9fa; padding: 10px; border-radius: 4px; border: 1px dashed #ccc;">
+        <label style="font-size: 0.85rem; color: #555; display: block; margin-bottom: 5px;">Prescription / Doctor Note (Optional):</label>
+        <input type="file" id="custPrescription" name="Prescription File" accept="image/*,.pdf" style="font-size: 0.85rem; width: 100%;">
+    </div>
+
+    <textarea id="custNotes" name="Additional Notes" placeholder="Any special delivery instructions..." style="padding: 10px; border: 1px solid #ccc; border-radius: 4px; height: 60px;"></textarea>
+
+    <button type="submit" class="btn btn-primary" style="padding: 12px; font-weight: bold;">Confirm & Place Order</button>
+</form>
+<!-- second part  -->
+ <!-- PRINTABLE ORDER RECEIPT MODAL -->
+<div class="modal" id="orderReceiptModal">
+    <div class="modal-content" style="max-width: 600px; padding: 25px;" id="printableReceiptContent">
+        <div style="text-align: center; border-bottom: 2px dashed #ccc; padding-bottom: 15px; margin-bottom: 15px;">
+            <h2 style="color: var(--navy); margin: 0;">ASGHAR MEDICAL STORE</h2>
+            <p style="margin: 3px 0; font-size: 0.9rem; color: #666;">Main Commercial Bazaar, Loralai, Balochistan</p>
+            <p style="margin: 3px 0; font-size: 0.85rem; color: #666;">Phones: 03288041010 | 03316820076</p>
+            <h3 style="margin-top: 10px; color: var(--emerald-dark);">Official Customer Order Receipt</h3>
+        </div>
+
+        <div style="margin-bottom: 15px; font-size: 0.95net; line-height: 1.5;">
+            <p><strong>Order Date:</strong> <span id="receiptDate"></span></p>
+            <p><strong>Customer Name:</strong> <span id="receiptCustName"></span></p>
+            <p><strong>Phone Number:</strong> <span id="receiptPhone"></span></p>
+            <p><strong>City / Location:</strong> <span id="receiptLocation"></span></p>
+            <p><strong>Consulting Doctor:</strong> <span id="receiptDoctor">None</span></p>
+            <p><strong>Prescription / Notes:</strong> <span id="receiptNotes">None</span></p>
+        </div>
+
+        <table style="width: 100%; border-collapse: collapse; margin-bottom: 15px;">
+            <thead>
+                <tr style="border-bottom: 1px solid #333; background: #f8f9fa;">
+                    <th style="padding: 8px; text-align: left;">Medicine / Tablet Name</th>
+                    <th style="padding: 8px; text-align: center;">Qty</th>
+                    <th style="padding: 8px; text-align: right;">Price</th>
+                </tr>
+            </thead>
+            <tbody id="receiptItemsBody">
+                <!-- Dynamically populated items -->
+            </tbody>
+        </table>
+
+        <div style="text-align: right; border-top: 2px solid #333; padding-top: 10px; margin-bottom: 20px;">
+            <h3 style="margin: 0; color: var(--navy);">Total Amount: <span id="receiptTotalAmount"></span></h3>
+        </div>
+
+        <div style="display: flex; gap: 10px; justify-content: center;" class="no-print">
+            <button class="btn btn-primary" onclick="window.print()"><i class="fa-solid fa-print"></i> Print Receipt</button>
+            <button class="btn btn-secondary" onclick="closeModal('orderReceiptModal')">Close Receipt</button>
+        </div>
+    </div>
+</div>
+ <!-- second part endn  -->
+      <!-- new code for recpiy end -->
+
+    <script src="script.js"></script>
+</body>
+</html>
