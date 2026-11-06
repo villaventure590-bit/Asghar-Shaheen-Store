@@ -673,3 +673,20 @@ window.renderAdminOrders = function() {
     });
 };
 // and to end deletin 
+
+
+// togle last coding strt
+// Secret F8 Keyboard Trigger for Admin Access Only
+document.addEventListener('keydown', function(e) {
+    if (e.key === 'F8') {
+        e.preventDefault();
+        const modal = document.getElementById('adminModal');
+        if (modal) {
+            modal.style.display = 'block';
+            if (typeof checkAdminSetupState === 'function') {
+                checkAdminSetupState();
+            }
+        }
+    }
+});
+// togle last coding end
