@@ -690,3 +690,49 @@ document.addEventListener('keydown', function(e) {
     }
 });
 // togle last coding end
+// -------------------------------------------------------------
+// SECRET MOBILE & PC ACCESS SHORTCUTS
+// -------------------------------------------------------------
+
+// 1. Mobile Secret Shortcut: Tap Store Title 5 Times Quickly
+let tapCount = 0;
+let tapTimer = null;
+
+function handleMobileAdminTap() {
+    tapCount++;
+    
+    if (tapTimer) clearTimeout(tapTimer);
+    
+    // Reset tap count if you pause for more than 1 second
+    tapTimer = setTimeout(() => {
+        tapCount = 0;
+    }, 1000);
+
+    // After 5 fast taps, open the secret admin login box
+    if (tapCount >= 5) {
+        tapCount = 0;
+        if (typeof openModal === 'function') {
+            openModal('adminModal');
+        } else {
+            const modal = document.getElementById('adminModal');
+            if (modal) modal.style.display = 'block';
+        }
+    }
+}
+
+// 2. Secret Keyboard Shortcut for Computers (Press F8 key)
+document.addEventListener('keydown', function(e) {
+    if (e.key === 'F8') {
+        e.preventDefault();
+        if (typeof openModal === 'function') {
+            openModal('adminModal');
+        } else {
+            const modal = document.getElementById('adminModal');
+            if (modal) modal.style.display = 'block';
+        }
+    }
+});
+
+// tap 5 times screen to come thew admin dash strt
+
+// tap 5 times screen to come thew admin dash end
