@@ -734,29 +734,22 @@ document.addEventListener('keydown', function(e) {
 });
 
 // tap 5 times screen to come thew admin dash strt
-// Mobile Hidden Tap Counter (Tap store title 5 times quickly to open Admin on mobile)
-let tapCount = 0;
-let tapTimer = null;
-
-function handleMobileAdminTap() {
-    tapCount++;
+// -------------------------------------------------------------
+// SECRET NUMBER CODE ACCESS (e.g., Typing 1234)
+// -------------------------------------------------------------
+function checkSecretNumberCode() {
+    const inputVal = document.getElementById('secretCodeInput').value;
     
-    if (tapTimer) clearTimeout(tapTimer);
-    
-    // Reset taps if user stops tapping for more than 1 second
-    tapTimer = setTimeout(() => {
-        tapCount = 0;
-    }, 1000);
-
-    // If tapped 5 times quickly, open Admin Modal
-    if (tapCount >= 5) {
-        tapCount = 0;
-        const modal = document.getElementById('adminModal');
-        if (modal) {
-            modal.style.display = 'block';
-            if (typeof checkAdminSetupState === 'function') {
-                checkAdminSetupState();
-            }
+    // Change "1234" to any secret number you like (e.g. 1, 2, 1234, 2026)
+    if (inputVal === '1234') {
+        // Clear the box and open Admin Modal
+        document.getElementById('secretCodeInput').value = '';
+        
+        if (typeof openModal === 'function') {
+            openModal('adminModal');
+        } else {
+            const modal = document.getElementById('adminModal');
+            if (modal) modal.style.display = 'block';
         }
     }
 }
