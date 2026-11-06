@@ -735,22 +735,36 @@ document.addEventListener('keydown', function(e) {
 
 // tap 5 times screen to come thew admin dash strt
 // -------------------------------------------------------------
-// SECRET NUMBER CODE ACCESS (e.g., Typing 1234)
+// BOTTOM DOUBLE-TAP ADMIN TRIGGER FOR MOBILE
 // -------------------------------------------------------------
-function checkSecretNumberCode() {
-    const inputVal = document.getElementById('secretCodeInput').value;
-    
-    // Change "1234" to any secret number you like (e.g. 1, 2, 1234, 2026)
-    if (inputVal === '1234') {
-        // Clear the box and open Admin Modal
-        document.getElementById('secretCodeInput').value = '';
-        
-        if (typeof openModal === 'function') {
-            openModal('adminModal');
-        } else {
-            const modal = document.getElementById('adminModal');
-            if (modal) modal.style.display = 'block';
+document.addEventListener('DOMContentLoaded', function() {
+    const bottomTrigger = document.getElementById('secretBottomTrigger');
+    if (!bottomTrigger) return;
+
+    let lastTap = 0;
+
+    bottomTrigger.addEventListener('touchend', function(e) {
+        const currentTime = new Date().getTime();
+        const tapInterval = currentTime - lastTap;
+
+        // If double-tapped within 400 milliseconds (0.4 seconds)
+        if (tapInterval < 400 && tapInterval > 0) {
+            e.preventDefault();
+            
+            // Open Admin Modal or Login
+            if (typeof openModal === 'function') {
+                openModal('adminModal');
+            } else {
+                const modal = document.getElementById('adminModal');
+                if (modal) {
+                    modal.style.display = 'block';
+                    if (typeof checkAdminSetupState === 'function') {
+                        checkAdminSetupState();
+                    }
+                }
+            }
         }
-    }
-}
+        lastTap = currentTime;
+    });
+});
 // tap 5 times screen to come thew admin dash end
