@@ -735,36 +735,30 @@ document.addEventListener('keydown', function(e) {
 
 // tap 5 times screen to come thew admin dash strt
 // -------------------------------------------------------------
-// BOTTOM DOUBLE-TAP ADMIN TRIGGER FOR MOBILE
+// GLOBAL NUMBER/KEY DETECTOR (Press '1' anywhere to open Admin)
 // -------------------------------------------------------------
-document.addEventListener('DOMContentLoaded', function() {
-    const bottomTrigger = document.getElementById('secretBottomTrigger');
-    if (!bottomTrigger) return;
+document.addEventListener('keydown', function(e) {
+    // Ignore key presses if you are currently typing inside a form field or chat box
+    const activeElement = document.activeElement;
+    if (activeElement && (activeElement.tagName === 'INPUT' || activeElement.tagName === 'TEXTAREA')) {
+        return;
+    }
 
-    let lastTap = 0;
-
-    bottomTrigger.addEventListener('touchend', function(e) {
-        const currentTime = new Date().getTime();
-        const tapInterval = currentTime - lastTap;
-
-        // If double-tapped within 400 milliseconds (0.4 seconds)
-        if (tapInterval < 400 && tapInterval > 0) {
-            e.preventDefault();
-            
-            // Open Admin Modal or Login
-            if (typeof openModal === 'function') {
-                openModal('adminModal');
-            } else {
-                const modal = document.getElementById('adminModal');
-                if (modal) {
-                    modal.style.display = 'block';
-                    if (typeof checkAdminSetupState === 'function') {
-                        checkAdminSetupState();
-                    }
+    // Check if the key pressed is "1" (or "F8")
+    if (e.key === '1' || e.key === 'F8') {
+        e.preventDefault();
+        
+        if (typeof openModal === 'function') {
+            openModal('adminModal');
+        } else {
+            const modal = document.getElementById('adminModal');
+            if (modal) {
+                modal.style.display = 'block';
+                if (typeof checkAdminSetupState === 'function') {
+                    checkAdminSetupState();
                 }
             }
         }
-        lastTap = currentTime;
-    });
+    }
 });
 // tap 5 times screen to come thew admin dash end
