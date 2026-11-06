@@ -1,3 +1,88 @@
+/* new css strat  */
+/* ------------------------------------------------------------- */
+/* BULLETPROOF MOBILE RESPONSIVE FIXES                            */
+/* ------------------------------------------------------------- */
+
+/* Universal Reset */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    width: 100%;
+    overflow-x: hidden; /* Prevents side-scrolling or breaking */
+    font-family: Arial, sans-serif;
+    background-color: #f4f6f8;
+}
+
+/* 1. FLEXBOX NAVIGATION BAR FIX */
+header, .navbar, nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 12px 20px;
+    background: #ffffff;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    position: relative;
+    z-index: 100;
+}
+
+/* Navigation Links Container */
+.nav-links, .menu {
+    display: flex;
+    gap: 15px;
+    list-style: none;
+    align-items: center;
+}
+
+/* 2. RESPONSIVE CONTAINERS & GRIDS */
+.container, .products-grid, .store-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 15px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+/* 3. MOBILE SCREEN BREAKPOINT (Infinix, Android, iPhones) */
+@media screen and (max-width: 768px) {
+    /* Stack navigation elements vertically so nothing gets cut off */
+    header, .navbar, nav {
+        flex-direction: column !important;
+        align-items: center !important;
+        text-align: center !important;
+        padding: 10px !important;
+    }
+
+    .nav-links, .menu {
+        flex-direction: column !important;
+        width: 100% !important;
+        padding: 0 !important;
+        margin-top: 10px !important;
+        gap: 8px !important;
+    }
+
+    /* Prevent text or boxes from overflowing the screen */
+    h1 {
+        font-size: 1.5rem !important;
+    }
+
+    /* Make modals fit mobile screens perfectly */
+    .modal, .admin-modal-content {
+        width: 95% !important;
+        max-width: 100% !important;
+        margin: 5% auto !important;
+        padding: 15px !important;
+    }
+}
+/* end new css  */
 :root {
     --emerald: #059669;
     --emerald-dark: #047857;
@@ -257,61 +342,4 @@ body {
 }
 
 
-/* new css strat  */
-/* ------------------------------------------------------------- */
-/* UNIVERSAL RESPONSIVE FLEX FIXES FOR ALL DEVICES               */
-/* ------------------------------------------------------------- */
 
-/* Ensure box-sizing is uniform so padding never breaks widths */
-* {
-    box-sizing: border-box;
-    max-width: 100%;
-}
-
-/* Make images and containers flexible */
-img, video, canvas {
-    height: auto;
-    max-width: 100%;
-}
-
-/* Responsive Container for Body and Layouts */
-body {
-    margin: 0;
-    padding: 0;
-    overflow-x: hidden; /* Prevents side-scrolling or breaking */
-}
-
-/* Flexible Grid / Flexbox for Store Layouts */
-.store-container, .products-grid, .admin-dashboard-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 15px;
-    width: 100%;
-    padding: 10px;
-}
-
-/* Make Modals and Admin Panels Fully Responsive on Mobile */
-.modal, .admin-modal-content {
-    width: 92% !important;
-    max-width: 500px !important;
-    margin: 10% auto !important;
-    padding: 20px !important;
-    box-sizing: border-box;
-}
-
-/* Mobile Screen Adjustments */
-@media screen and (max-width: 768px) {
-    /* Stack elements vertically on small screens so nothing is cut off */
-    header, nav, .footer-content {
-        flex-direction: column !important;
-        text-align: center !important;
-    }
-    
-    /* Adjust button and input sizing for touchscreens */
-    input, button, select {
-        font-size: 16px !important; /* Prevents auto-zoom bug on iOS/Android */
-        padding: 12px !important;
-    }
-}
-/* end new css  */
