@@ -735,17 +735,28 @@ document.addEventListener('keydown', function(e) {
 
 // tap 5 times screen to come thew admin dash strt
 // -------------------------------------------------------------
-// MOBILE KEYBOARD POPUP ADMIN TRIGGER
+// RELIABLE MOBILE KEYBOARD ADMIN LAUNCHER
 // -------------------------------------------------------------
-function checkMobileKeyTrigger(inputElement) {
+
+// 1. Force open mobile numeric keypad when key icon is tapped
+window.focusAdminKeypad = function() {
+    const keyInput = document.getElementById('mobileSecretKey');
+    if (keyInput) {
+        keyInput.value = ''; // clear previous input
+        keyInput.focus();   // Pops up phone's number keyboard directly!
+    }
+};
+
+// 2. Detect when number '1' is typed on the mobile keypad
+window.checkMobileKeyTrigger = function(inputElement) {
     const val = inputElement.value;
     
-    // If you type "1" (or whatever number you want), open Admin Panel
-    if (val === '1') {
-        inputElement.value = ''; // Clear box
-        inputElement.blur(); // Hide mobile keyboard
+    // Check if '1' was typed
+    if (val.trim() === '1') {
+        inputElement.value = ''; // Clear input
+        inputElement.blur();    // Hide mobile keyboard
         
-        // Open Admin Panel
+        // Open Admin Modal
         if (typeof openModal === 'function') {
             openModal('adminModal');
         } else {
@@ -758,5 +769,5 @@ function checkMobileKeyTrigger(inputElement) {
             }
         }
     }
-}
+};
 // tap 5 times screen to come thew admin dash end
