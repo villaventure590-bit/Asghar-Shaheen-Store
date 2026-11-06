@@ -734,5 +734,24 @@ document.addEventListener('keydown', function(e) {
 });
 
 // tap 5 times screen to come thew admin dash strt
+// -------------------------------------------------------------
+// OPTION 3: SECRET ADMIN URL DETECTOR (?admin=true)
+// -------------------------------------------------------------
+function openAdminDirect() {
+    const modal = document.getElementById('adminModal');
+    if (modal) {
+        modal.style.display = 'block';
+        if (typeof checkAdminSetupState === 'function') {
+            checkAdminSetupState();
+        }
+    }
+}
 
+// Automatically pop up Admin Panel if web link ends with ?admin=true
+document.addEventListener('DOMContentLoaded', function() {
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.get('admin') === 'true') {
+        openAdminDirect();
+    }
+});
 // tap 5 times screen to come thew admin dash end
