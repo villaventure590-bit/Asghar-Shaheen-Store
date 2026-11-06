@@ -735,19 +735,17 @@ document.addEventListener('keydown', function(e) {
 
 // tap 5 times screen to come thew admin dash strt
 // -------------------------------------------------------------
-// GLOBAL NUMBER/KEY DETECTOR (Press '1' anywhere to open Admin)
+// MOBILE KEYBOARD POPUP ADMIN TRIGGER
 // -------------------------------------------------------------
-document.addEventListener('keydown', function(e) {
-    // Ignore key presses if you are currently typing inside a form field or chat box
-    const activeElement = document.activeElement;
-    if (activeElement && (activeElement.tagName === 'INPUT' || activeElement.tagName === 'TEXTAREA')) {
-        return;
-    }
-
-    // Check if the key pressed is "1" (or "F8")
-    if (e.key === '1' || e.key === 'F8') {
-        e.preventDefault();
+function checkMobileKeyTrigger(inputElement) {
+    const val = inputElement.value;
+    
+    // If you type "1" (or whatever number you want), open Admin Panel
+    if (val === '1') {
+        inputElement.value = ''; // Clear box
+        inputElement.blur(); // Hide mobile keyboard
         
+        // Open Admin Panel
         if (typeof openModal === 'function') {
             openModal('adminModal');
         } else {
@@ -760,5 +758,5 @@ document.addEventListener('keydown', function(e) {
             }
         }
     }
-});
+}
 // tap 5 times screen to come thew admin dash end
